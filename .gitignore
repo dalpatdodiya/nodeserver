@@ -1,0 +1,5 @@
+node_module
+.vscode
+images
+node_modules
+.env
