@@ -4,6 +4,8 @@ const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 const { Result } = require("express-validator");
 const helmet = require('helmet');
+const cors = require('cors');
+const compression = require('compression');
 const sequelize = require("./config/db.config");
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
@@ -43,6 +45,8 @@ const fileFilter = (req, file, cb) => {
 };
 
 app.use(helmet());
+app.use(cors());
+app.use(compression());
 app.use(express.json()); // application/json
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
